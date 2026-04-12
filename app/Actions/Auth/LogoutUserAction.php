@@ -3,15 +3,17 @@
 namespace App\Actions\Auth;
 
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\PersonalAccessToken;
 
 class LogoutUserAction
 {
-    public function execute(User $user): void
+    public function execute(Request $request): void
     {
-        $token = $user->currentAccessToken();
-        assert($token instanceof PersonalAccessToken);
+        Auth::guard('web')->logout();
 
-        $token->delete();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
     }
 }

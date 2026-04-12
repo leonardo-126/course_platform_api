@@ -13,11 +13,12 @@ class LoginController extends Controller
 {
     public function __invoke(LoginRequest $request, LoginUserAction $action): JsonResponse
     {
-        ['user' => $user, 'token' => $token] = $action->execute($request->validated());
+        $user = $action->execute($request->validated());
+
+        $request->session()->regenerate();
 
         return response()->json([
-            'user'  => new UserResource($user),
-            'token' => $token,
+            'user' => new UserResource($user),
         ]);
     }
 }

@@ -11,7 +11,7 @@ class LogoutController extends Controller
 {
     public function __invoke(Request $request, LogoutUserAction $action): JsonResponse
     {
-        $action->execute($request->user());
+        $action->execute($request);
 
         return response()->json(['message' => 'Logout realizado.']);
     }
