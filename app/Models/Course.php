@@ -63,4 +63,7 @@ class Course extends Model
     {
         return $this->hasMany(CourseEnrollment::class);
     }
+    public const STATUS_DRAFT     = 'draft';
+    public const STATUS_PUBLISHED = 'published';
+    public const STATUS_ARCHIVED  = 'archived';
 }
