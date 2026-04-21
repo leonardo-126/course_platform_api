@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\CourseAuthor;
 
-use App\Actions\Course\AddCourseAuthorAction;
-use App\Actions\Course\RemoveCourseAuthorAction;
-use App\Actions\Course\UpdateCourseAuthorAction;
+use App\Actions\CourseAuthor\AddCourseAuthorAction;
+use App\Actions\CourseAuthor\RemoveCourseAuthorAction;
+use App\Actions\CourseAuthor\UpdateCourseAuthorAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\courseAuthor\StoreCourseAuthorRequest;
 use App\Http\Requests\courseAuthor\UpdateCourseAuthorRequest;

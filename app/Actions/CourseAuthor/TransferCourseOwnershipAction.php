@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions\Course;
+namespace App\Actions\CourseAuthor;
 
 use App\Models\Course;
 use Illuminate\Support\Facades\DB;

@@ -19,7 +19,7 @@ class CreateCourseAction
             ]);
             $course->authors()->attach($data['created_by'], [
                 'is_owner' => true,
-                'can_view_students_progress' => true,
+                'can_view_student_progress' => true,
                 'joined_at' => now(),
             ]);
             return $course;
