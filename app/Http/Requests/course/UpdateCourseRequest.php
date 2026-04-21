@@ -31,7 +31,7 @@ class UpdateCourseRequest extends FormRequest
             'title'             => ['sometimes', 'string', 'max:255'],
             'slug'              => ['sometimes', 'string', 'max:255', "unique:courses,slug,{$courseId}"],
             'description'       => ['sometimes', 'nullable', 'string'],
-            'thumbnail_url'     => ['sometimes', 'nullable', 'url', 'max:500'],
+            'thumbnail'         => ['nullable', 'image', 'mimes:jpeg,png,webp', 'max:2048'], // 2MB
             'estimated_minutes' => ['sometimes', 'integer', 'min:0'],
             'xp_reward'         => ['sometimes', 'integer', 'min:0'],
             'status'            => ['sometimes', 'in:draft,published,archived'],

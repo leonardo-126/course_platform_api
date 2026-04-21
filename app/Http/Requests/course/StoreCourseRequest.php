@@ -24,7 +24,7 @@ class StoreCourseRequest extends FormRequest
         return [
             'title'             => ['required', 'string', 'max:255'],
             'description'       => ['nullable', 'string'],
-            'thumbnail_url'     => ['nullable', 'url', 'max:500'],
+            'thumbnail'         => ['nullable', 'image', 'mimes:jpeg,png,webp', 'max:2048'], // 2MB
             'estimated_minutes' => ['nullable', 'integer', 'min:0'],
             'xp_reward'         => ['nullable', 'integer', 'min:0'],
         ];
