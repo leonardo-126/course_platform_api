@@ -11,11 +11,7 @@ class UpdateCourseRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        $course = $this->route('course');
-        return $course->authorEntries()
-            ->where('user_id', $this->user()->id)
-            ->where('is_owner', true)
-            ->exists();
+        return $this->user()->can('update', $this->route('course'));
     }
 
     /**

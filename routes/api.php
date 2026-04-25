@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Course\CourseController;
 use App\Http\Controllers\CourseAuthor\CourseAuthorController;
+use App\Http\Controllers\CourseSection\CourseSectionController;
 use App\Models\Course;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,11 @@ Route::middleware('auth:sanctum')->group(function () {
         ->parameters(['authors' => 'author']);
     Route::get('courses/mine', [CourseController::class, 'mine']);
     Route::get('courses/mine/created', [CourseController::class, 'createMine']);
+    Route::patch('courses/{course}/sections/reorder', [CourseSectionController::class, 'reorder']);
+    Route::apiResource('courses.sections', CourseSectionController::class)
+        ->parameters(['sections' => 'section']);
+
+
     Route::apiResource('courses', CourseController::class)->except(['index']);
 
     Route::post('/auth/logout', LogoutController::class);
