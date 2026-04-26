@@ -7,6 +7,7 @@ use App\Http\Controllers\Course\CourseController;
 use App\Http\Controllers\CourseAuthor\CourseAuthorController;
 use App\Http\Controllers\CourseSection\CourseSectionController;
 use App\Http\Controllers\Lesson\LessonController;
+use App\Http\Controllers\LessonQuestion\LessonQuestionController;
 use App\Models\Course;
 use Illuminate\Support\Facades\Route;
 
@@ -27,10 +28,20 @@ Route::middleware('auth:sanctum')->group(function () {
         [LessonController::class, 'reorder']
     );
 
+    Route::patch(
+        'courses/{course}/sections/{section}/lessons/{lesson}/questions/reorder',
+        [LessonQuestionController::class, 'reorder']
+    );
+
+    Route::apiResource(
+        'courses.sections.lessons.questions',
+        LessonQuestionController::class
+    )->parameters(['questions' => 'question']);
+
     Route::apiResource('courses.sections.lessons', LessonController::class)
         ->parameters(['lessons' => 'lesson']);
 
-        
+
     Route::apiResource('courses.sections', CourseSectionController::class)
         ->parameters(['sections' => 'section']);
 
